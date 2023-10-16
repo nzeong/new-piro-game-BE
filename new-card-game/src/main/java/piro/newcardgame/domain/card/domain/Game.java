@@ -24,20 +24,20 @@ public class Game extends BaseEntity {
     private User fromId;
 
     @Column(name = "from_score", nullable = false)
-    private int fromScore;
+    private Long fromScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "to_id", nullable = false)
     private User toId;
 
     @Column(name = "to_score", nullable = false)
-    private int toScore;
+    private Long toScore;
 
     @Enumerated(EnumType.STRING)
     private GameStatus status;
 
     @Builder
-    public Game(User fromId, int fromScore, User toId, int toScore, GameStatus status) {
+    public Game(User fromId, Long fromScore, User toId, Long toScore, GameStatus status) {
         this.fromId = fromId;
         this.fromScore = fromScore;
         this.toId = toId;
