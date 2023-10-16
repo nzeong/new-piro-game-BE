@@ -30,7 +30,7 @@ public class Game extends BaseEntity {
     @JoinColumn(name = "to_id", nullable = false)
     private User toId;
 
-    @Column(name = "to_score", nullable = false)
+    @Column(name = "to_score")
     private Long toScore;
 
     @Enumerated(EnumType.STRING)

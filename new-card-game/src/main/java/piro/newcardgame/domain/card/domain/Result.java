@@ -27,7 +27,7 @@ public class Result extends BaseEntity {
     private GameType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "winner_id", nullable = false)
+    @JoinColumn(name = "winner_id")
     private User winnerId;
 
     @Builder
