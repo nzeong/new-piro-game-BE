@@ -10,7 +10,6 @@ import piro.newcardgame.domain.user.dto.request.UserJoinRequest;
 import piro.newcardgame.domain.user.service.UserService;
 
 @RestController
-@RequestMapping("api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
 
