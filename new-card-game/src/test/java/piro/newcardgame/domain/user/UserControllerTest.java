@@ -15,6 +15,8 @@ import piro.newcardgame.domain.user.dto.request.UserJoinRequest;
 import piro.newcardgame.domain.user.service.UserService;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -41,6 +43,7 @@ class UserControllerTest {
         String pwd = "1jfhdhw";
         String email = "kimsuhan@naver.com";
 
+
         mockMvc.perform(post("/join")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(new UserJoinRequest(name, nick, pwd, email))))
@@ -56,6 +59,10 @@ class UserControllerTest {
         String nick = "나는바보";
         String pwd = "1jfhdhw";
         String email = "kimsuhan@naver.com";
+        // 그저 입력값들일뿐 예외 상황이 아니어도 괜찮다
+
+        when(userService.join(any()))
+                .thenThrow(new RuntimeException("해당 userId가 중복됩니다.")); // 예외 발생시키는 코드
 
         mockMvc.perform(post("/join")
                         .contentType(MediaType.APPLICATION_JSON)

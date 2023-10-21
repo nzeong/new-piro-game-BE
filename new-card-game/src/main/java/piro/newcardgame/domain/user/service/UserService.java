@@ -20,7 +20,7 @@ public class UserService {
                     throw new RuntimeException(userJoinRequest.getName() + "는 이미 있습니다.");
                 });
 
-        // 저장
+        //저장
         User user = userJoinRequest.toEntity();
         userRepository.save(user);
 
