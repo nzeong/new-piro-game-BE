@@ -20,6 +20,11 @@
 ### 4. 회원가입
 - URL: `/join`
 - Method: `POST`
+---
+- 회원가입 성공한 경우
+![회원가입 성공](https://github.com/nzeong/Spring-study/assets/121355994/68ac0277-17ff-4995-927a-88d980b9148f)
+- User의 name이 같아 회원가입 실패한 경우
+![회원가입 실패](https://github.com/nzeong/Spring-study/assets/121355994/03f2d600-e990-4c1e-b6ca-bd30ba52f5f9)
 
 ### 5. 공격하기
 - URL: `/games`
