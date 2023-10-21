@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import piro.newcardgame.domain.user.domain.User;
 import piro.newcardgame.domain.user.dto.request.UserJoinRequest;
+import piro.newcardgame.domain.user.exception.AppException;
+import piro.newcardgame.domain.user.exception.ErrorCode;
 import piro.newcardgame.domain.user.repository.UserRepository;
 
 @Service
@@ -17,7 +19,7 @@ public class UserService {
         //유저의 name 중복 체크하기
         userRepository.findByName(userJoinRequest.getName())
                 .ifPresent(user -> {
-                    throw new RuntimeException(userJoinRequest.getName() + "는 이미 있습니다.");
+                    throw new AppException(ErrorCode.USERNAME_DUPICATED, userJoinRequest.getName() + "는 이미 있습니다.");
                 });
 
         //저장
