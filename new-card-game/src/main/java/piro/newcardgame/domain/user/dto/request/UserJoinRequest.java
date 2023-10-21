@@ -24,11 +24,12 @@ public class UserJoinRequest {
         this.email = email;
     }
 
-    public User toEntity() { // requestDto 단계에서 정의하고 Service에서는 꺼내 쓰는 것이 더 편한 듯
+    public User toEntity(String encodedPwd) { // requestDto 단계에서 정의하고 Service에서는 꺼내 쓰는 것이 더 편한 듯
+
         return User.builder()
                 .name(name)
                 .nick(nick)
-                .pwd(pwd)
+                .pwd(encodedPwd)
                 .email(email)
                 .build();
     }
