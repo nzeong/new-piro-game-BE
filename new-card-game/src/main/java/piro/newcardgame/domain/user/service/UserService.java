@@ -1,6 +1,7 @@
 package piro.newcardgame.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import piro.newcardgame.domain.user.domain.User;
 import piro.newcardgame.domain.user.dto.request.UserJoinRequest;
@@ -13,6 +14,8 @@ import piro.newcardgame.domain.user.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder pwdEncoder;
+
 
     public String join(UserJoinRequest userJoinRequest){
 
@@ -23,7 +26,8 @@ public class UserService {
                 });
 
         //저장
-        User user = userJoinRequest.toEntity();
+
+        User user = userJoinRequest.toEntity(pwdEncoder.encode(userJoinRequest.getPwd()));
         userRepository.save(user);
 
         return "SUCCESS";
