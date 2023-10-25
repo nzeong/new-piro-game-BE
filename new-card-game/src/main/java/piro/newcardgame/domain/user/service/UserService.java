@@ -26,11 +26,24 @@ public class UserService {
                 });
 
         //저장
-
         User user = userJoinRequest.toEntity(pwdEncoder.encode(userJoinRequest.getPwd()));
         userRepository.save(user);
 
         return "SUCCESS";
+    }
+
+    public String login(String name, String pwd){
+        // userName 없음
+        User selectedUser = userRepository.findByName(name)
+                .orElseThrow(() -> new AppException(ErrorCode.USERNAME_NOT_FOUND, name + "이 없습니다."));
+
+        // password 틀림
+        if(!pwdEncoder.matches(selectedUser.getPwd(), pwd)){
+            throw new AppException(ErrorCode.INVALID_PASSWORD, "비밀번호를 잘못 입력했습니다.");
+        }
+
+        // 앞에서 exception 안 났으면 토큰 발행
+        return "token 리턴";
     }
 
 }
