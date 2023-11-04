@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByName(String name); // 값이 없으면 값이 안 들어온다
+
+    Optional<User> findByNick(String nick);
 }
