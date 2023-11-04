@@ -3,10 +3,12 @@ package piro.newcardgame.domain.user.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@NoArgsConstructor // @AllArgsConstructor 써주면 오류나요
 public class UserLoginRequest {
     @NotNull(message = "아이디를 입력해주세요.")
     private String name;
