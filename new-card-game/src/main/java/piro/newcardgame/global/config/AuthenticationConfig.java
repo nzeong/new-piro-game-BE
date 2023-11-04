@@ -18,22 +18,18 @@ public class AuthenticationConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.httpBasic(HttpBasicConfigurer::disable)
+        return http
+                .httpBasic(HttpBasicConfigurer::disable)
                 .csrf(CsrfConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // jwt 사용하는 경우 쓴다
-                .authorizeHttpRequests(authorize ->
-                        authorize
+                .authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers("/**").permitAll()
-                                .requestMatchers("/login", "/join").permitAll() // join, login은 언제나 가능
-//                                .requestMatchers(HttpMethod.POST, "/games").authenticated() // games는 권한 있어야 가능
-                );
+                                .requestMatchers("/login", "/join").permitAll()) // join, login은 언제나 가능
+                .getOrBuild();
 //                .exceptionHandling(authenticationManager -> authenticationManager
 //                        .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
 //                        .accessDeniedHandler(new CustomAccessDeniedHandler()))
 //                .addFilterBefore(new JwtAuthenticationFilter(this.userDetailsService, this.jwtTokenResolver), UsernamePasswordAuthenticationFilter.class);
-        return http.build();
-
     }
-
 }
