@@ -27,8 +27,16 @@
 ![회원가입 실패](https://github.com/nzeong/Spring-study/assets/121355994/03f2d600-e990-4c1e-b6ca-bd30ba52f5f9)
 
 ### 5. 공격하기
-- URL: `/games`
+- URL: `/attack`
+- Method: `GET`
+
+- [o] 1~10 사이의 랜덤 정수 5개와 현재 존재하는 모든 유저의 닉네임을 보여준다.
+    - [] 자기 자신의 닉네임은 보이지 않는다.
+
+- URL: `/attack`
 - Method: `POST`
+
+- [o] 로그인한 유저는 숫자 5개 중 하나를 골라 다른 유저를 공격할 수 있다.
 
 ### 6. 게임전적
 - URL: `/games`
