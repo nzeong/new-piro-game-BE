@@ -27,7 +27,7 @@ public class Game extends BaseEntity {
     private Long fromScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "to_id", nullable = false)
+    @JoinColumn(name = "to_id")
     private User toId;
 
     @Column(name = "to_score")
