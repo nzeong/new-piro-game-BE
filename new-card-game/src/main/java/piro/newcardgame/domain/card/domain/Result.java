@@ -20,7 +20,7 @@ public class Result extends BaseEntity {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", nullable = false)
+    @JoinColumn(name = "game_id")
     private Game gameId;
 
     @Enumerated(EnumType.STRING)
